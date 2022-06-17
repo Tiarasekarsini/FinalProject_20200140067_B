@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sky">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
+        android:scrollbars="vertical"
+        tools:context=".Diagnosa_Utama">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="163dp"
+            android:layout_height="174dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.031"
+            app:srcCompat="@drawable/ic_diagnosa_utama" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Silahkan pilih gejala-gejala dibawah ini \n yang dialami oleh kucing anda"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:typeface="serif"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <CheckBox
+            android:id="@+id/cb_Bersin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Bersin-bersin" />
+
+        <CheckBox
+            android:id="@+id/cb_Batuk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Batuk" />
+
+        <CheckBox
+            android:id="@+id/cb_Demam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Demam" />
+
+        <CheckBox
+            android:id="@+id/cb_PMterbuka"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Pernafasan lewat mulut" />
+
+        <CheckBox
+            android:id="@+id/cb_Depresi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Depresi" />
+
+        <CheckBox
+            android:id="@+id/cb_Dehidrasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Dehidrasi" />
+
+        <CheckBox
+            android:id="@+id/cb_Infeksikemih"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Infeksi Saluran Kemih" />
+
+        <CheckBox
+            android:id="@+id/cb_Pbuangak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Peningkatan buang air kecil" />
+
+        <CheckBox
+            android:id="@+id/cb_Minumberlebih"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Minum berlebihan" />
+
+        <CheckBox
+            android:id="@+id/cb_Benjolan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Terdapat benjolan" />
+
+        <CheckBox
+            android:id="@+id/cb_BauM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Bau Mulut" />
+
+        <CheckBox
+            android:id="@+id/cb_PenurunanBB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Penurunan berat badan" />
+
+        <CheckBox
+            android:id="@+id/cb_Hseleramakan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Selera makan hilang" />
+
+        <CheckBox
+            android:id="@+id/cb_Diare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Diare" />
+
+        <CheckBox
+            android:id="@+id/cb_Muntah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Muntah" />
+
+        <CheckBox
+            android:id="@+id/cb_lidahcokelat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Lidah berwarna cokelat" />
+
+        <CheckBox
+            android:id="@+id/cb_sembelit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Sembelit" />
+
+        <CheckBox
+            android:id="@+id/cb_Bulurontok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Bulu rontok" />
+
+        <CheckBox
+            android:id="@+id/cb_infeksimata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Infeksi Mata" />
+
+        <CheckBox
+            android:id="@+id/cb_kelesuan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Lesu" />
+
+        <CheckBox
+            android:id="@+id/cb_Diareberdarah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Diare Berdarah" />
+
+        <CheckBox
+            android:id="@+id/cb_MEkorKaki"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Menggigit ekor atau kaki" />
+
+        <CheckBox
+            android:id="@+id/cb_kulitelastis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickChecked"
+            android:text="Kulit elastis" />
+
+        <Button
+            android:id="@+id/btn_diagnosa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Cek Diagnosa" />
+    </LinearLayout>
+
+
+</ScrollView>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/drawable/blok.xml" value="0.2595" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/drawable/border.xml" value="0.2595" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/activity_diagnosa.xml" value="0.264" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/activity_diagnosa_utama.xml" value="0.25416666666666665" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/activity_hasil_diagnosa.xml" value="0.264" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/activity_hasil_diagnsosa.xml" value="0.1" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/activity_home.xml" value="0.152" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/activity_jadwal_utama.xml" value="0.11770833333333333" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/activity_main.xml" value="0.24320652173913043" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/activity_my_cats_utama.xml" value="0.2" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/activity_riwayat_diagnosa.xml" value="0.11770833333333333" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/activity_tambah_jadwal.xml" value="0.264" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/activity_tambah_kucing.xml" value="0.264" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/activity_update_jadwal.xml" value="0.25416666666666665" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/activity_update_kucing.xml" value="0.2" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/row_data_diagnosa.xml" value="0.264" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/row_data_jadwal.xml" value="0.21557971014492755" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/layout/row_data_kucing.xml" value="0.264" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/PAM 2022/HelloCats/app/src/main/res/menu/menu_kucing.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
