@@ -32,18 +32,22 @@
             android:parentActivityName=".MyCats_Utama" />
         <activity
             android:name=".Riwayat_Diagnosa"
+            android:label="Riwayat Diagnosa"
             android:exported="false"
             android:parentActivityName=".Home" />
         <activity
             android:name=".Diagnosa_Utama"
+            android:label="Diagnosa"
             android:exported="false"
             android:parentActivityName=".Home" />
         <activity
             android:name=".Jadwal_Utama"
+            android:label="Jadwal Vaksinasi"
             android:exported="false"
             android:parentActivityName=".Home" />
         <activity
             android:name=".MyCats_Utama"
+            android:label="MyCats"
             android:exported="true"
             android:parentActivityName=".Home" />
         <activity

@@ -64,6 +64,7 @@ public class MyCats_Utama extends AppCompatActivity {
             }
         });
     }
+    //method untuk membaca data dari database
     public void bacadata() {
         KucingArrayList.clear();
 
