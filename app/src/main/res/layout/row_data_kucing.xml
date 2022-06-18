@@ -59,9 +59,11 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_gravity="right"
+            android:layout_marginLeft="200dp"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            app:srcCompat="@drawable/overflow" />
+            app:srcCompat="@drawable/open" />
     </LinearLayout>
 
     <LinearLayout

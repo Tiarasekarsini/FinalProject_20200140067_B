@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -72,7 +73,7 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.JadwalView
         holder.Tanggalvtxt.setTextColor(Color.BLACK);
         holder.Tanggalvtxt.setTextSize(20);
         holder.Tanggalvtxt.setText(tv);
-
+        
         holder.btnImgJ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +84,7 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.JadwalView
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
-                            case R.id.update:
+                            case R.id.Lihat_Data:
                                 Bundle bundel = new Bundle();
                                 bundel.putString("kunci1", idj);
                                 bundel.putString("kunci2", idkj);
@@ -94,31 +95,6 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.JadwalView
                                 intent.putExtras(bundel);
                                 view.getContext().startActivity(intent);
                                 break;
-
-                            case R.id.delete:
-                                AlertDialog.Builder alertdb = new AlertDialog.Builder(view.getContext());
-                                alertdb.setTitle("Yakin Jadwal Vaksinasi " + nkj + " akan dihapus?");
-
-                                alertdb.setMessage("Tekan Ya untuk menghapus");
-                                alertdb.setCancelable(false);
-                                alertdb.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        HapusData(idj);
-                                        Toast.makeText(view.getContext(), "Jadwal Vaksinasi " + nkj + " telah dihapus", Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(view.getContext(),Jadwal_Utama.class);
-                                        view.getContext().startActivity(intent);
-                                    }
-                                });
-                                alertdb.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.cancel();
-                                    }
-                                });
-                                AlertDialog adlg = alertdb.create();
-                                adlg.show();
-                                break;
                         }
                         return true;
                     }
@@ -126,41 +102,6 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.JadwalView
                 pop.show();
             }
         });
-    }
-    private void HapusData(final String idj) {
-        String url_update = "https://20200140067.20200140067.praktikumtiumy.com/hapusdata_jadwal.php";
-        final String TAG = Jadwal_Utama.class.getSimpleName();
-        final String TAG_SUCCES = "success";
-        final int[] sukses = new int[1];
-
-        StringRequest stringReq = new StringRequest(Request.Method.POST, url_update, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d(TAG, "Respon: " + response.toString());
-
-                try {
-                    JSONObject jobj = new JSONObject(response);
-                    sukses[0] = jobj.getInt(TAG_SUCCES);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Error : " + error.getMessage());
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                params.put("id_jadwal", idj);
-
-                return params;
-            }
-        };
-        AppController.getInstance().addToRequestQueue(stringReq);
     }
 
     @Override
@@ -179,6 +120,7 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.JadwalView
             namakjtxt = (TextView) v.findViewById(R.id.txtNamaKJ);
             Tanggalvtxt = (TextView) v.findViewById(R.id.txtTglV);
             btnImgJ = (ImageButton) v.findViewById(R.id.imgbtnJ);
+
         }
     }
 }

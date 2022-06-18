@@ -85,7 +85,7 @@ public class KucingAdapter extends RecyclerView.Adapter<KucingAdapter.KucingView
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (menuItem.getItemId())
                         {
-                            case R.id.update:
+                            case R.id.Lihat_Data:
 
                                 Bundle bundle = new Bundle();
                                 bundle.putString("key1", id);
@@ -97,31 +97,6 @@ public class KucingAdapter extends RecyclerView.Adapter<KucingAdapter.KucingView
                                 intent.putExtras(bundle);
                                 view.getContext().startActivity(intent);
                                 break;
-
-                            case R.id.delete:
-                                AlertDialog.Builder alertdb = new AlertDialog.Builder(view.getContext());
-                                alertdb.setTitle("Yakin " +nk+" akan dihapus?");
-
-                                alertdb.setMessage("Tekan Ya untuk menghapus");
-                                alertdb.setCancelable(false);
-                                alertdb.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        HapusData(id);
-                                        Toast.makeText(view.getContext(), "Data " +id+" telah dihapus", Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(view.getContext(), MyCats_Utama.class);
-                                        view.getContext().startActivity(intent);
-                                    }
-                                });
-                                alertdb.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.cancel();
-                                    }
-                                });
-                                AlertDialog adlg = alertdb.create();
-                                adlg.show();
-                                break;
                         }
                         return true;
                     }
@@ -129,43 +104,6 @@ public class KucingAdapter extends RecyclerView.Adapter<KucingAdapter.KucingView
                 pm.show();
             }
         });
-    }
-
-    private void HapusData(final String idx){
-        String url_update = "https://20200140067.20200140067.praktikumtiumy.com/hapusdata_kucing.php";
-        final String TAG = MyCats_Utama.class.getSimpleName();
-        final String TAG_SUCCES = "success";
-        final int[] sukses = new int[1];
-
-        StringRequest stringReq = new StringRequest(Request.Method.POST, url_update, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d(TAG, "Respon: " + response.toString());
-
-                try {
-                    JSONObject jobj = new JSONObject(response);
-                    sukses[0] = jobj.getInt(TAG_SUCCES);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Error : "+error.getMessage());
-            }
-        })
-        {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                params.put("id_kucing", idx);
-
-                return params;
-            }
-        };
-        AppController.getInstance().addToRequestQueue(stringReq);
     }
     @Override
     public int getItemCount() {

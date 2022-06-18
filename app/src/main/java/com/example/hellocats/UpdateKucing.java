@@ -3,11 +3,15 @@ package com.example.hellocats;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,11 +22,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hellocats.App.AppController;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,7 +36,7 @@ public class UpdateKucing extends AppCompatActivity {
 
     TextView TVID, TVJK;
     EditText Edtnama, Edttanggal;
-    Button savebtn, cancelbtn;
+    Button savebtn, cancelbtn,hapusbtn;
     String id, nk, tgl, jk, namaEdt, tanggalEdt;
     int sukses;
 
@@ -47,6 +53,13 @@ public class UpdateKucing extends AppCompatActivity {
         TVJK = findViewById(R.id.tvJenisK);
         Edtnama = findViewById(R.id.editNama);
         Edttanggal = findViewById(R.id.editTanggalL);
+
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        hapusbtn = findViewById(R.id.btnHapusK);
         savebtn = findViewById(R.id.btnSave);
         cancelbtn = findViewById(R.id.btnCancel);
 
@@ -61,13 +74,56 @@ public class UpdateKucing extends AppCompatActivity {
         Edtnama.setText(nk);
         TVJK.setText(jk);
         Edttanggal.setText(tgl);
+
+        Edttanggal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(UpdateKucing.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                        month = month+1;
+                        String date = year+"-"+month+"-"+dayOfMonth;
+                        Edttanggal.setText(date);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+
+            }
+        });
         savebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                     UpdateData();
             }
         });
+        hapusbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HapusData(id);
+                AlertDialog.Builder alertdb = new AlertDialog.Builder(view.getContext());
+                alertdb.setTitle("Yakin " +nk+" akan dihapus?");
 
+                alertdb.setMessage("Tekan Ya untuk menghapus");
+                alertdb.setCancelable(false);
+                alertdb.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        HapusData(id);
+                        Toast.makeText(view.getContext(), "Data " +id+" telah dihapus", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(view.getContext(), MyCats_Utama.class);
+                        view.getContext().startActivity(intent);
+                    }
+                });
+                alertdb.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog adlg = alertdb.create();
+                adlg.show();
+            }
+        });
         cancelbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +132,43 @@ public class UpdateKucing extends AppCompatActivity {
                 Toast.makeText(UpdateKucing.this,"Perubahan dibatalkan",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void HapusData(final String id){
+        String url_update = "https://20200140067.20200140067.praktikumtiumy.com/hapusdata_kucing.php";
+        final String TAG = MyCats_Utama.class.getSimpleName();
+        final String TAG_SUCCES = "success";
+        final int[] sukses = new int[1];
+
+        StringRequest stringReq = new StringRequest(Request.Method.POST, url_update, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Respon: " + response.toString());
+
+                try {
+                    JSONObject jobj = new JSONObject(response);
+                    sukses[0] = jobj.getInt(TAG_SUCCES);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Error : "+error.getMessage());
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+
+                params.put("id_kucing", id);
+
+                return params;
+            }
+        };
+        AppController.getInstance().addToRequestQueue(stringReq);
+
     }
     public void UpdateData()
     {

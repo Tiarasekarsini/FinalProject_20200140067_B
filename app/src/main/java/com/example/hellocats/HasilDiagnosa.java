@@ -33,7 +33,7 @@ public class HasilDiagnosa extends AppCompatActivity {
 
     int success;
 
-    private static String url_insert = "http://10.0.2.2/umyTI/tambahdiagnosa.php";
+    private static String url_insert = "https://20200140067.20200140067.praktikumtiumy.com/tambahdiagnosa.php";
     private static final String TAG = HasilDiagnosa.class.getSimpleName();
     private static final String TAG_SUCCES = "success";
 

@@ -37,7 +37,7 @@ public class TambahJadwal extends AppCompatActivity {
 
     int success;
 
-    private static String url_insert = "http://10.0.2.2/umyTI/tambahjadwal.php";
+    private static String url_insert = "https://20200140067.20200140067.praktikumtiumy.com/tambahjadwal.php";
     private static final String TAG = TambahJadwal.class.getSimpleName();
     private static final String TAG_SUCCES = "success";
 

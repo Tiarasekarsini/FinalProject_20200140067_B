@@ -37,7 +37,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.214"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:layout_constraintVertical_bias="0.147" />
 
     <TextView
@@ -119,18 +118,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
-        android:id="@+id/btnSaveJ"
-        android:layout_width="327dp"
+        android:id="@+id/btnUpdate"
+        android:layout_width="123dp"
         android:layout_height="48dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginRight="10dp"
-        android:text="Simpan"
+        android:layout_marginTop="52dp"
+        android:layout_marginRight="15dp"
+        android:backgroundTint="@color/Golden"
+        android:text="Update"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
+        app:layout_constraintHorizontal_bias="0.843"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtTglV" />
+
+    <Button
+        android:id="@+id/btnHapus"
+        android:layout_width="123dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="15dp"
+        android:backgroundTint="@color/Brightcolar"
+        android:text="Hapus"
+        app:layout_constraintBottom_toTopOf="@+id/btnCancelJ"
+        app:layout_constraintEnd_toStartOf="@+id/btnUpdate"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtTglV"
+        app:layout_constraintVertical_bias="0.736" />
 
     <Button
         android:id="@+id/btnCancelJ"
@@ -139,13 +154,13 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="60dp"
         android:layout_marginRight="10dp"
-        android:backgroundTint="@color/Golden"
+        android:backgroundTint="@color/Brightcolar"
         android:text="Batalkan"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintHorizontal_bias="0.607"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17"
-        app:layout_constraintVertical_bias="0.225" />
+        app:layout_constraintVertical_bias="0.286" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

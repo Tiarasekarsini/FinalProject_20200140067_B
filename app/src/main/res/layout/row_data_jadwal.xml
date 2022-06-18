@@ -47,12 +47,13 @@
 
         <ImageButton
             android:id="@+id/imgbtnJ"
-            android:layout_width="wrap_content"
-            android:layout_height="65dp"
+            android:layout_width="75dp"
+            android:layout_height="77dp"
             android:layout_gravity="right"
+            android:layout_marginLeft="200dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            app:srcCompat="@drawable/overflow" />
+            app:srcCompat="@drawable/open" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="45dp"
