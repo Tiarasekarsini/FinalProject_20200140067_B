@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/sky"
     android:orientation="vertical"
-    tools:context=".UpdateKucing">
+    tools:context=".KelolaKucing">
 
     <TextView
         android:id="@+id/tvID"
@@ -138,13 +138,13 @@
         android:layout_marginTop="92dp"
         android:backgroundTint="@color/Brightcolar"
         android:text="Hapus"
-        app:layout_constraintEnd_toStartOf="@+id/btnSave"
+        app:layout_constraintEnd_toStartOf="@+id/btnUpdate"
         app:layout_constraintHorizontal_bias="0.772"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTanggalL" />
 
     <Button
-        android:id="@+id/btnSave"
+        android:id="@+id/btnUpdate"
         android:layout_width="123dp"
         android:layout_height="48dp"
         android:layout_marginRight="15dp"

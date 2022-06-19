@@ -1,10 +1,8 @@
 package com.example.hellocats.Adapter;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,31 +10,15 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.example.hellocats.App.AppController;
-import com.example.hellocats.Jadwal_Utama;
-import com.example.hellocats.MyCats_Utama;
 import com.example.hellocats.R;
-import com.example.hellocats.UpdateJadwal;
+import com.example.hellocats.KelolaJadwal;
 import com.example.hellocats.model.JadwalVaksin;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.JadwalViewHolder> {
 
@@ -91,7 +73,7 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.JadwalView
                                 bundel.putString("kunci3",nkj);
                                 bundel.putString("kunci4", tv);
 
-                                Intent intent = new Intent(view.getContext(), UpdateJadwal.class);
+                                Intent intent = new Intent(view.getContext(), KelolaJadwal.class);
                                 intent.putExtras(bundel);
                                 view.getContext().startActivity(intent);
                                 break;

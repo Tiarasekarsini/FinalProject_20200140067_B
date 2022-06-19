@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -72,7 +74,7 @@ public class TambahKucing extends AppCompatActivity {
         simpanbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Savedata();
+                Savedata();
             }
         });
         batalkanbtn.setOnClickListener(new View.OnClickListener() {

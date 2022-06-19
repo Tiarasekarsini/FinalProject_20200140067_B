@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -31,75 +30,85 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UpdateJadwal extends AppCompatActivity {
-    TextView TVIDJ, TVIDKJ, TVNamaKJ;
-    EditText EdtTanggalV;
-    Button savebtnj,cancelbtnj,hapusbtn;
-    String idj,idkj,nmkj,tgv, TanggalVEdt;
+public class KelolaKucing extends AppCompatActivity {
+
+    TextView TVID, TVJK;
+    EditText Edtnama, Edttanggal;
+    Button updatebtn, cancelbtn,hapusbtn;
+    String id, nk, tgl, jk, namaEdt, tanggalEdt;
     int sukses;
 
-    private String url_update = "https://20200140067.20200140067.praktikumtiumy.com/updatedata_jadwal.php";
-    private static final String TAG = UpdateJadwal.class.getSimpleName();
+    private String url_update = "https://20200140067.20200140067.praktikumtiumy.com/updatedata_kucing.php";
+    private static final String TAG = KelolaKucing.class.getSimpleName();
     private static final String TAG_SUCCES="success";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_jadwal);
+        setContentView(R.layout.activity_kelola_kucing);
 
-        TVIDJ = findViewById(R.id.tvIDJ);
-        TVIDKJ = findViewById(R.id.tvIDKJ);
-        TVNamaKJ = findViewById(R.id.tvNamaKJ);
-        EdtTanggalV = findViewById(R.id.edtTglV);
+        TVID = findViewById(R.id.tvID);
+        TVJK = findViewById(R.id.tvJenisK);
+        Edtnama = findViewById(R.id.editNama);
+        Edttanggal = findViewById(R.id.editTanggalL);
+
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        hapusbtn = findViewById(R.id.btnHapus);
-        savebtnj = findViewById(R.id.btnUpdate);
-        cancelbtnj = findViewById(R.id.btnCancelJ);
+        hapusbtn = findViewById(R.id.btnHapusK);
+        updatebtn = findViewById(R.id.btnUpdate);
+        cancelbtn = findViewById(R.id.btnCancel);
 
-        Bundle bd = getIntent().getExtras();
-        idj = bd.getString("kunci1");
-        idkj = bd.getString("kunci2");
-        nmkj = bd.getString("kunci3");
-        tgv = bd.getString("kunci4");
+        Bundle bl = getIntent().getExtras();
+        id = bl.getString("key1");
+        nk = bl.getString("key2");
+        tgl = bl.getString("key3");
+        jk = bl.getString("key4");
 
-        TVIDJ.setText("Jadwal Vaksinasi ke "+ idj);
-        TVIDKJ.setText(idkj);
-        TVNamaKJ.setText(nmkj);
-        EdtTanggalV.setText(tgv);
 
-        EdtTanggalV.setOnClickListener(new View.OnClickListener() {
+        TVID.setText("Data Kucing Ke " + id);
+        Edtnama.setText(nk);
+        TVJK.setText(jk);
+        Edttanggal.setText(tgl);
+
+        Edttanggal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(UpdateJadwal.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(KelolaKucing.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
                         month = month+1;
                         String date = year+"-"+month+"-"+dayOfMonth;
-                        EdtTanggalV.setText(date);
+                        Edttanggal.setText(date);
                     }
                 },year,month,day);
                 datePickerDialog.show();
+
+            }
+        });
+        updatebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    UpdateData();
             }
         });
         hapusbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HapusData(idj);
+                HapusData(id);
                 AlertDialog.Builder alertdb = new AlertDialog.Builder(view.getContext());
-                alertdb.setTitle("Yakin Jadwal Vaksinasi " + nmkj + " akan dihapus?");
+                alertdb.setTitle("Yakin " +nk+" akan dihapus?");
 
                 alertdb.setMessage("Tekan Ya untuk menghapus");
                 alertdb.setCancelable(false);
                 alertdb.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        HapusData(idj);
-                        Toast.makeText(view.getContext(), "Jadwal Vaksinasi " + nmkj + " telah dihapus", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(view.getContext(),Jadwal_Utama.class);
+                        HapusData(id);
+                        Toast.makeText(view.getContext(), "Data " +id+" telah dihapus", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(view.getContext(), MyCats_Utama.class);
                         view.getContext().startActivity(intent);
                     }
                 });
@@ -113,23 +122,19 @@ public class UpdateJadwal extends AppCompatActivity {
                 adlg.show();
             }
         });
-        savebtnj.setOnClickListener(new View.OnClickListener() {
+        cancelbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UpdateData();
-            }
-        });
-        cancelbtnj.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Callhome();
-                Toast.makeText(UpdateJadwal.this, "Perubahan Jadwal dibatalkan", Toast.LENGTH_SHORT).show();
+
+                CallHomeActivity();
+                Toast.makeText(KelolaKucing.this,"Perubahan dibatalkan",Toast.LENGTH_SHORT).show();
             }
         });
     }
-    public void HapusData(final String idj){
-        String url_update = "https://20200140067.20200140067.praktikumtiumy.com/hapusdata_jadwal.php";
-        final String TAG = Jadwal_Utama.class.getSimpleName();
+    //method yang berfungsi untuk menghapus data yang ada di database
+    public void HapusData(final String id){
+        String url_update = "https://20200140067.20200140067.praktikumtiumy.com/hapusdata_kucing.php";
+        final String TAG = MyCats_Utama.class.getSimpleName();
         final String TAG_SUCCES = "success";
         final int[] sukses = new int[1];
 
@@ -148,14 +153,15 @@ public class UpdateJadwal extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Error : " + error.getMessage());
+                Log.e(TAG, "Error : "+error.getMessage());
             }
-        }) {
+        })
+        {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
 
-                params.put("id_jadwal", idj);
+                params.put("id_kucing", id);
 
                 return params;
             }
@@ -163,9 +169,11 @@ public class UpdateJadwal extends AppCompatActivity {
         AppController.getInstance().addToRequestQueue(stringReq);
 
     }
+    //method untuk mengupdate/mengedit data kedalam database
     public void UpdateData()
     {
-        TanggalVEdt = EdtTanggalV.getText().toString();
+        namaEdt = Edtnama.getText().toString();
+        tanggalEdt = Edttanggal.getText().toString();
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         StringRequest stringReq = new StringRequest(Request.Method.POST, url_update, new Response.Listener<String>() {
@@ -177,9 +185,9 @@ public class UpdateJadwal extends AppCompatActivity {
                     JSONObject jObj = new JSONObject(response);
                     sukses = jObj.getInt(TAG_SUCCES);
                     if (sukses == 1) {
-                        Toast.makeText(UpdateJadwal.this, "Sukses mengedit data", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(KelolaKucing.this, "Sukses mengedit data", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(UpdateJadwal.this, "gagal", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(KelolaKucing.this, "gagal", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -189,24 +197,27 @@ public class UpdateJadwal extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Error : " + error.getMessage());
-                Toast.makeText(UpdateJadwal.this, "Gagal Edit data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(KelolaKucing.this, "Gagal Edit data", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
 
-                params.put("id_jadwal",idj);
-                params.put("tanggal_vaksin", TanggalVEdt);
+                params.put("id_kucing",id);
+                params.put("nama_kucing", namaEdt);
+                params.put("tanggal_lahir", tanggalEdt);
 
                 return params;
             }
         };
         requestQueue.add(stringReq);
-        Callhome();
+        CallHomeActivity();
     }
-    public void Callhome(){
-        Intent inten = new Intent(getApplicationContext(), Jadwal_Utama.class);
+
+    //method untuk berpindah dari activity KelolaKucing ke MyCats_Utama
+    public void CallHomeActivity(){
+        Intent inten = new Intent(getApplicationContext(), MyCats_Utama.class);
         startActivity(inten);
         finish();
     }

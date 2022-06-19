@@ -1,10 +1,8 @@
 package com.example.hellocats.Adapter;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,29 +10,16 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.example.hellocats.App.AppController;
-import com.example.hellocats.MyCats_Utama;
 import com.example.hellocats.R;
-import com.example.hellocats.UpdateKucing;
+import com.example.hellocats.KelolaKucing;
 import com.example.hellocats.model.DataKucing;
 
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class KucingAdapter extends RecyclerView.Adapter<KucingAdapter.KucingViewHolder> {
 
@@ -74,6 +59,7 @@ public class KucingAdapter extends RecyclerView.Adapter<KucingAdapter.KucingView
         holder.tgltxt.setTextSize(15);
         holder.tgltxt.setText(tgl);
 
+        //syntax untuk menampilkan popup menu yang digunakan untuk lihat data kucing untuk nantinya dapat dikelola
         holder.btnImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,7 +79,7 @@ public class KucingAdapter extends RecyclerView.Adapter<KucingAdapter.KucingView
                                 bundle.putString("key3",tgl);
                                 bundle.putString("key4",jk);
                                 
-                                Intent intent = new Intent(view.getContext(), UpdateKucing.class);
+                                Intent intent = new Intent(view.getContext(), KelolaKucing.class);
                                 intent.putExtras(bundle);
                                 view.getContext().startActivity(intent);
                                 break;

@@ -66,6 +66,7 @@ public class MyCats_Utama extends AppCompatActivity {
     }
     //method untuk membaca data dari database
     public void bacadata() {
+        //mereset arraylist
         KucingArrayList.clear();
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -91,6 +92,7 @@ public class MyCats_Utama extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+                //mengupdate adapter ketika MyCats_utama dijalankan
                adapter.notifyDataSetChanged();
             }
         }, new Response.ErrorListener() {

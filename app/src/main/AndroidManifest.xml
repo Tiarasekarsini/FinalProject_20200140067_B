@@ -18,13 +18,13 @@
             android:name=".HasilDiagnosa"
             android:exported="false" />
         <activity
-            android:name=".UpdateJadwal"
+            android:name=".KelolaJadwal"
             android:exported="false" />
         <activity
             android:name=".TambahJadwal"
             android:exported="false" />
         <activity
-            android:name=".UpdateKucing"
+            android:name=".KelolaKucing"
             android:exported="false" />
         <activity
             android:name=".TambahKucing"
