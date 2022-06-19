@@ -78,6 +78,7 @@
         android:layout_marginBottom="80dp"
         android:background="@drawable/border"
         android:ems="10"
+        android:hint="Nama Disesuaikan"
         android:inputType="textPersonName"
         android:textSize="16sp"
         android:typeface="serif"
