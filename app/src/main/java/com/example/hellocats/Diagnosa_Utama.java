@@ -49,7 +49,6 @@ public class Diagnosa_Utama extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String NamaPenyakit = "";
-                String TidakAda ="Mohon Maaf kami tidak dapat mendiagnosa";
 
                 //Untuk penyakit Infeksi Saluran Pernapasan Atas (ISPA)
                 if(Bersincb.isChecked() && Batukcb.isChecked() && Demamcb.isChecked() && PMterbukacb.isChecked() && Depresicb.isChecked()){
@@ -75,13 +74,8 @@ public class Diagnosa_Utama extends AppCompatActivity {
                 if(kelesuancb.isChecked() && Diareberdarahcb.isChecked() && MEkorKakicb.isChecked() && Kulitelastiscb.isChecked()){
                     NamaPenyakit += "Feline Panleukopenia (FPLV)";
                 }
-                //Jika gejala yang dipilih tidak sesuai, maka akan muncul pemberitahuan tersebut
-                else{
-                    TidakAda +="";
-                }
                 Intent in = new Intent(Diagnosa_Utama.this, HasilDiagnosa.class);
                 in.putExtra("nama_penyakit", NamaPenyakit);
-                in.putExtra("nama_penyakit",TidakAda);
                 startActivity(in);
                 finish();
             }
